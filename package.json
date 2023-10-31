@@ -32,8 +32,11 @@
 		"deploy": "gh-pages -d dist -t true"
 	},
 	"dependencies": {
+		"axios": "^1.6.0",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"styled-components": "^6.1.0",
+		"styled-reset": "^4.5.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^18.2.0",
@@ -43,6 +46,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.9.1",
 		"@typescript-eslint/parser": "^6.9.1",
 		"@vitejs/plugin-react": "^4.1.0",
+		"babel-plugin-styled-components": "^2.1.4",
 		"commitizen": "^4.3.0",
 		"eslint": "^8.52.0",
 		"eslint-config-prettier": "^9.0.0",

@@ -1,12 +1,17 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react, { BabelOptions } from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  base: "/quiz_app",
-  server: {
-    host: "localhost",
-    port: 3035,
-  },
-  plugins: [react()],
+const babelOptions: BabelOptions = {
+	plugins: ['babel-plugin-styled-components']
+};
+
+const userConfig = defineConfig({
+	base: '/quiz_app',
+	server: {
+		host: 'localhost',
+		port: 3035
+	},
+	plugins: [react({ babel: babelOptions })]
 });
+
+export default userConfig;
