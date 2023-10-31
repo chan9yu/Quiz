@@ -1,0 +1,33 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 💾
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+      - name: Install Dependencies 💾
+        run: yarn install --immutable
+      - name: Build 🔧
+        run: yarn build
+      - name: Deploy with gh-pages 📦
+        run: |
+          git config --global user.email "wry5533@gmail.com"
+          git config --global user.name "chan9yu"
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
