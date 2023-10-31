@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import type { GetCategoryResponse, SearchTokenResponse } from './@types';
 import { categoryAPIs, quizAPIs, tokenAPIs } from './apis';
+import { GlobalStyle } from './styles';
 
 const App = () => {
 	const [tokenData, setTokenData] = useState<SearchTokenResponse | null>(null);
@@ -39,18 +40,21 @@ const App = () => {
 	};
 
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-			<div style={{ display: 'flex', gap: '12px' }}>
-				<button onClick={handleSearchToken}>searchToken</button>
-				<button onClick={handleResetToken}>resetToken</button>
+		<>
+			<GlobalStyle />
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+				<div style={{ display: 'flex', gap: '12px' }}>
+					<button onClick={handleSearchToken}>searchToken</button>
+					<button onClick={handleResetToken}>resetToken</button>
+				</div>
+				<div style={{ display: 'flex', gap: '12px' }}>
+					<button onClick={handleGetCategory}>getCategory</button>
+				</div>
+				<div style={{ display: 'flex', gap: '12px' }}>
+					<button onClick={handleGetQuiz}>getQuiz</button>
+				</div>
 			</div>
-			<div style={{ display: 'flex', gap: '12px' }}>
-				<button onClick={handleGetCategory}>getCategory</button>
-			</div>
-			<div style={{ display: 'flex', gap: '12px' }}>
-				<button onClick={handleGetQuiz}>getQuiz</button>
-			</div>
-		</div>
+		</>
 	);
 };
 
