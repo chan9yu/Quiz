@@ -1,5 +1,6 @@
 import type { ResponseCode } from './common';
 
+/** quiz api 요청 파라미터 타입 */
 export type QuizRequestParams = {
 	/** 질문 수 */
 	amount: number;
@@ -20,6 +21,7 @@ export type QuizRequestParams = {
 	token?: string;
 };
 
+/** quiz 데이터 타입 */
 export type QuizData = {
 	/** 카테고리 */
 	category: string;
@@ -40,10 +42,19 @@ export type QuizData = {
 	incorrect_answers: string[];
 };
 
+/** quiz api 응답타입 */
 export type QuizListResponse = {
 	/** 응답 결과에 대한 코드 */
 	response_code: ResponseCode;
 
 	/** 퀴즈 데이터 리스트 */
 	results: QuizData[];
+};
+
+/** quiz 전역상태 타입 */
+export type QuizState = {
+	getQuizLoading: boolean;
+	getQuizSuccess: boolean;
+	getQuizError: string | null;
+	quiz: QuizData[] | null;
 };

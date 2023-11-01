@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import type { GetCategoryResponse, SearchTokenResponse } from './@types';
 import { categoryAPIs, quizAPIs, tokenAPIs } from './apis';
 import { GlobalStyle } from './styles';
+import { RootState, getQuizRequestAction } from './store';
 
 const App = () => {
+	const dispatch = useDispatch();
+	const { quiz } = useSelector((state: RootState) => state.quiz);
+	console.log('### quiz', quiz);
+
 	const [tokenData, setTokenData] = useState<SearchTokenResponse | null>(null);
 	const [categoryData, setCategoryData] = useState<GetCategoryResponse | null>(null);
 
@@ -28,15 +34,12 @@ const App = () => {
 	};
 
 	const handleGetQuiz = async () => {
-		const { data } = await quizAPIs.getQuiz({
-			amount: 10,
-			category: categoryData?.trivia_categories[2].id,
-			difficulty: 'easy',
-			encode: 'base64',
-			type: 'multiple',
-			token: tokenData?.token
-		});
-		console.log('### handleGetQuiz', data);
+		dispatch(
+			getQuizRequestAction({
+				amount: 10,
+				type: 'multiple'
+			})
+		);
 	};
 
 	return (
