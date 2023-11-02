@@ -6,7 +6,8 @@
 
 ## 🔗 Link
 
-- <a href="https://chan9yu.github.io/quiz_app" target="_blank" rel="noreferrer">APP</a>
+- <a href="https://chan9yu.github.io/quiz_app" target="_blank" rel="noreferrer">Quiz APP</a>
+- <a href="https://chan9yu.github.io/quiz_app/storybook" target="_blank" rel="noreferrer">Story Book</a>
 
 <p align="right">
   <a href="#readme-top">맨 위로</a>

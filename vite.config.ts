@@ -1,7 +1,6 @@
 import react, { BabelOptions } from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 
-
 const babelOptions: BabelOptions = {
 	plugins: ['babel-plugin-styled-components']
 };

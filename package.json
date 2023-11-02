@@ -23,7 +23,7 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
+		"build": "tsc && vite build && touch ./dist/.nojekyll",
 		"test": "npx vitest",
 		"coverage": "vitest run --coverage",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -31,7 +31,9 @@
 		"commit": "npx git-cz",
 		"prepare": "husky install",
 		"husky:permission": "chmod +x .husky/*",
-		"deploy": "gh-pages -d dist -t true"
+		"deploy": "gh-pages -d dist -t true",
+		"storybook": "storybook dev -p 6006",
+		"build:storybook": "storybook build"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.9.7",
@@ -48,6 +50,15 @@
 	"devDependencies": {
 		"@commitlint/cli": "^18.2.0",
 		"@commitlint/config-conventional": "^18.1.0",
+		"@storybook/addon-essentials": "^7.5.2",
+		"@storybook/addon-interactions": "^7.5.2",
+		"@storybook/addon-links": "^7.5.2",
+		"@storybook/addon-onboarding": "^1.0.8",
+		"@storybook/blocks": "^7.5.2",
+		"@storybook/builder-vite": "^7.5.2",
+		"@storybook/react": "^7.5.2",
+		"@storybook/react-vite": "^7.5.2",
+		"@storybook/testing-library": "^0.2.2",
 		"@testing-library/jest-dom": "^6.1.4",
 		"@testing-library/react": "^14.0.0",
 		"@types/react": "^18.2.15",
@@ -64,12 +75,14 @@
 		"eslint-plugin-prettier": "^5.0.1",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.4",
+		"eslint-plugin-storybook": "^0.6.15",
 		"eslint-plugin-testing-library": "^6.1.0",
 		"gh-pages": "^6.0.0",
 		"husky": "^8.0.3",
 		"jsdom": "^22.1.0",
 		"lint-staged": "^15.0.2",
 		"prettier": "^3.0.3",
+		"storybook": "^7.5.2",
 		"typescript": "^5.0.2",
 		"vite": "^4.4.5",
 		"vitest": "^0.34.6"

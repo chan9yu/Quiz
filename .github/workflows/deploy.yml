@@ -14,16 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 💾
+      - name: Use Node.js 🚀🔵
         uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
-      - name: Install Dependencies 💾
+      - name: Install Dependencies ⬇️📦
         run: yarn install --immutable
-      - name: Build 🔧
+      - name: Build 🛠️
         run: yarn build
-      - name: Deploy with gh-pages 📦
+      - name: Build storybook 📚🎉
+        run: |
+          yarn build:storybook
+          mv ./storybook-static ./dist/storybook
+      - name: Deploy with gh-pages 🚀🌐
         run: |
           git config --global user.email "wry5533@gmail.com"
           git config --global user.name "chan9yu"
