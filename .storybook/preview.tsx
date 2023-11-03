@@ -2,10 +2,10 @@ import type { Decorator, Parameters } from '@storybook/react';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle } from '../src/styles';
+import { GlobalStyle, theme } from '../src/styles';
 
 export const decorator: Decorator = (Story, context) => (
-	<ThemeProvider theme={{}}>
+	<ThemeProvider theme={theme}>
 		<GlobalStyle />
 		<Story {...context} />
 	</ThemeProvider>

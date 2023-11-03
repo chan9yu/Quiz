@@ -1,0 +1,37 @@
+import { Meta, Typeset } from '@storybook/blocks';
+import { typography } from './typography';
+
+<Meta title="Foundation/Typography" />
+
+# Typography
+
+- typography는 `styled-componen`t에 `theme`를 이용해 구현되어 있습니다.
+
+<br />
+
+## Regular
+
+<Typeset
+	fontSizes={Object.entries(typography.size).map(v => v[1])}
+	fontWeight={typography.weight.regular}
+	sampleText="Typography"
+	fontFamily="sans-serif"
+/>
+
+## Medium
+
+<Typeset
+	fontSizes={Object.entries(typography.size).map(v => v[1])}
+	fontWeight={typography.weight.medium}
+	sampleText="Typography"
+	fontFamily="sans-serif"
+/>
+
+## Bold
+
+<Typeset
+	fontSizes={Object.entries(typography.size).map(v => v[1])}
+	fontWeight={typography.weight.bold}
+	sampleText="Typography"
+	fontFamily="sans-serif"
+/>
