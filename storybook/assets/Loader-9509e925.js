@@ -1,0 +1,2 @@
+import{j as s}from"./jsx-runtime-ffb262ed.js";import{s as t}from"./styled-components.browser.esm-99af5b4e.js";const a=t.div.withConfig({displayName:"Loaderstyled__Wrapper",componentId:"sc-dc1mfj-0"})([""]),o=r=>{const{children:e}=r;return s.jsx(a,{children:e})};try{o.displayName="Loader",o.__docgenInfo={description:"",displayName:"Loader",props:{}}}catch{}export{o as L};
+//# sourceMappingURL=Loader-9509e925.js.map

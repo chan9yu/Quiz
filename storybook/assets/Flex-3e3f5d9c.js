@@ -1,0 +1,2 @@
+import{j as o}from"./jsx-runtime-ffb262ed.js";import{s}from"./styled-components.browser.esm-99af5b4e.js";const p=s.div.withConfig({displayName:"Flexstyled__Wrapper",componentId:"sc-10trkrw-0"})([""]),e=r=>{const{children:t}=r;return o.jsx(p,{children:t})};try{e.displayName="Flex",e.__docgenInfo={description:"",displayName:"Flex",props:{}}}catch{}export{e as F};
+//# sourceMappingURL=Flex-3e3f5d9c.js.map

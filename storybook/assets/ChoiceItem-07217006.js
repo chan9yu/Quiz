@@ -1,0 +1,2 @@
+import{j as r}from"./jsx-runtime-ffb262ed.js";import{s}from"./styled-components.browser.esm-99af5b4e.js";const c=s.div.withConfig({displayName:"ChoiceItemstyled__Wrapper",componentId:"sc-1x627ma-0"})([""]),o=e=>{const{children:t}=e;return r.jsx(c,{children:t})};try{o.displayName="ChoiceItem",o.__docgenInfo={description:"",displayName:"ChoiceItem",props:{}}}catch{}export{o as C};
+//# sourceMappingURL=ChoiceItem-07217006.js.map
