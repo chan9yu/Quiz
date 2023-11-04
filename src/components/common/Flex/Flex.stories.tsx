@@ -11,15 +11,15 @@ const Item = styled.div`
 	justify-content: center;
 	align-items: center;
 
+	&::before {
+		content: 'Item';
+	}
+
 	${({ theme }) => css`
 		background-color: ${theme.color.primary[500]};
 		color: ${theme.color.gray[50]};
 		font-size: ${theme.typography.size[200]};
 	`}
-
-	&::before {
-		content: 'Item';
-	}
 `;
 
 /**
@@ -54,8 +54,8 @@ export const Default: Story = {
 };
 
 /**
- * - 기본적으로 Flex 컴포넌트는 div 태그로 랜더링이 됩니다.
- * - 필요한 경우 tag라는 속성을 이용해서 원하는 html tag로 랜더링할 수 있습니다.
+ * - 기본적으로 Flex 컴포넌트는 `div` 태그로 렌더링이 됩니다.
+ * - 필요한 경우 tag라는 속성을 이용해서 원하는 html tag로 렌더링할 수 있습니다.
  */
 export const Tag: Story = {
 	...Default,
@@ -91,7 +91,7 @@ export const Direction: Story = {
 
 /**
  * - flex의 `gap`을 제공하는 속성입니다.
- * - number만 입력하게 되면 자동으로 px단위로 계산됩니다.
+ * - number만 입력하게 되면 자동으로 px 단위로 계산됩니다.
  */
 export const Gap: Story = {
 	...Default,
@@ -115,7 +115,7 @@ export const FlexWrap: Story = {
 };
 
 /**
- * - 해당 Flex 컴포넌트의 너비를 부모 요소에 기준으로 꽉 채웁니다.
+ * - Flex 컴포넌트의 너비를 부모 요소에 기준으로 꽉 채웁니다.
  */
 export const FullWidth: Story = {
 	...Default,
@@ -129,8 +129,8 @@ export const FullWidth: Story = {
 };
 
 /**
- * - 해당 Flex 컴포넌트의 높이와 너비를 설정합니다.
- * - number만 입력하게 되면 자동으로 px단위로 계산됩니다.
+ * - Flex 컴포넌트의 높이와 너비를 설정합니다.
+ * - number만 입력하게 되면 자동으로 px 단위로 계산됩니다.
  */
 export const WidthAndHeight: Story = {
 	...Default,
