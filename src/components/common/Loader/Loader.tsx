@@ -6,9 +6,18 @@ import * as S from './Loader.styled';
 interface LoaderProps extends S.LoaderStyledProps, CommonProps, HTMLAttributes<HTMLDivElement> {}
 
 const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
-	const { $color = 'primary', $position = 'static', $size = '50px', className, style, ...rest } = props;
+	const {
+		$borderWidth = '5px',
+		$color = 'primary',
+		$position = 'static',
+		$size = '50px',
+		className,
+		style,
+		...rest
+	} = props;
 
 	const styledProps: S.LoaderStyledProps = {
+		$borderWidth,
 		$color,
 		$position,
 		$size
