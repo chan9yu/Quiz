@@ -4,12 +4,14 @@ import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle, theme } from '../src/styles';
 
-export const decorator: Decorator = (Story, context) => (
-	<ThemeProvider theme={theme}>
-		<GlobalStyle />
-		<Story {...context} />
-	</ThemeProvider>
-);
+export const decorators: Decorator[] = [
+	(Story, context) => (
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<Story {...context} />
+		</ThemeProvider>
+	)
+];
 
 export const parameters: Parameters = {
 	actions: {
