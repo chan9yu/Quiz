@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.color.gray[50]};
+    background-color: ${({ theme }) => theme.color.gray[900]};
     color: ${({ theme }) => theme.color.gray[900]};
     font-family: 'Noto Sans', sans-serif;
     font-weight: ${({ theme }) => theme.typography.weight.regular};
