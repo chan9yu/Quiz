@@ -3,10 +3,12 @@ import { combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
 
+import { categoryReducer, categorySaga } from './category';
 import { quizReducer, quizSaga } from './quiz';
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
+	category: categoryReducer,
 	quiz: quizReducer
 });
 
@@ -18,5 +20,5 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(function* () {
-	yield all([fork(quizSaga)]);
+	yield all([fork(categorySaga), fork(quizSaga)]);
 });
