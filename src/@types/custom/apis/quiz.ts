@@ -50,11 +50,3 @@ export type QuizListResponse = {
 	/** 퀴즈 데이터 리스트 */
 	results: QuizData[];
 };
-
-/** quiz 전역상태 타입 */
-export type QuizState = {
-	getQuizLoading: boolean;
-	getQuizSuccess: boolean;
-	getQuizError: string | null;
-	quiz: QuizData[] | null;
-};
