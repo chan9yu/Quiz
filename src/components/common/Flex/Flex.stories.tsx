@@ -99,6 +99,15 @@ export const Gap: Story = {
 };
 
 /**
+ * - flex의 `flex-grow`을 제공하는 속성입니다.
+ * - 기본적으로 `0` 값으로 설정되어 있습니다.
+ */
+export const FlexGrow: Story = {
+	...Default,
+	render: args => <Flex {...args} $flexGrow="1" />
+};
+
+/**
  * - flex의 `flex-wrap`을 제공하는 속성입니다.
  * - 기본적으로 `nowrap` 값으로 설정되어 있습니다.
  */

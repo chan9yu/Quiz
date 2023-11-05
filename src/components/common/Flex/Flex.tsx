@@ -1,9 +1,9 @@
 import { ForwardedRef, HTMLAttributes, forwardRef } from 'react';
 
-import type { CommonPropsWithChuldren } from '../../../@types';
+import type { CommonPropsWithChildren } from '../../../@types';
 import * as S from './Flex.styled';
 
-interface FlexProps extends S.FlexStyledProps, CommonPropsWithChuldren, HTMLAttributes<HTMLElement> {
+interface FlexProps extends S.FlexStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
 	tag?: keyof JSX.IntrinsicElements;
 }
 
@@ -11,6 +11,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
 	const {
 		$alignItems = 'flex-start',
 		$direction = 'row',
+		$flexGrow = '0',
 		$flexWrap = 'nowrap',
 		$fullWidth,
 		$gap,
@@ -27,6 +28,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
 	const styledProps: S.FlexStyledProps = {
 		$alignItems,
 		$direction,
+		$flexGrow,
 		$flexWrap,
 		$fullWidth,
 		$gap,
