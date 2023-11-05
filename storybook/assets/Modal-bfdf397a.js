@@ -1,2 +1,0 @@
-import{j as s}from"./jsx-runtime-ffb262ed.js";import{s as t}from"./styled-components.browser.esm-99af5b4e.js";const e=t.div.withConfig({displayName:"Modalstyled__Wrapper",componentId:"sc-1vahdxz-0"})([""]),r=o=>{const{children:a}=o;return s.jsx(e,{children:a})};try{r.displayName="Modal",r.__docgenInfo={description:"",displayName:"Modal",props:{}}}catch{}export{r as M};
-//# sourceMappingURL=Modal-bfdf397a.js.map

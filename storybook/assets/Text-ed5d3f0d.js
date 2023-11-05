@@ -1,2 +1,0 @@
-import{j as o}from"./jsx-runtime-ffb262ed.js";import{s}from"./styled-components.browser.esm-99af5b4e.js";const p=s.div.withConfig({displayName:"Textstyled__Wrapper",componentId:"sc-d7wcq8-0"})([""]),e=t=>{const{children:r}=t;return o.jsx(p,{children:r})};try{e.displayName="Text",e.__docgenInfo={description:"",displayName:"Text",props:{}}}catch{}export{e as T};
-//# sourceMappingURL=Text-ed5d3f0d.js.map
