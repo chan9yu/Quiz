@@ -1,6 +1,6 @@
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 
-import { QuizRequestParams } from '../../@types';
+import type { QuizRequestParams } from '../../@types';
 import { quizAPIs } from '../../apis';
 import * as actions from './quizActions';
 

@@ -1,14 +1,56 @@
-import { ReactNode } from 'react';
+import { ForwardedRef, HTMLAttributes, forwardRef } from 'react';
+
+import type { CommonPropsWithChildren } from '../../../@types';
 import * as S from './Flex.styled';
 
-interface FlexProps {
-	children?: ReactNode;
+interface FlexProps extends S.FlexStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
+	tag?: keyof JSX.IntrinsicElements;
 }
 
-const Flex = (props: FlexProps) => {
-	const { children } = props;
+const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
+	const {
+		$alignItems = 'flex-start',
+		$direction = 'row',
+		$flexGrow = '0',
+		$flexWrap = 'nowrap',
+		$fullWidth,
+		$gap,
+		$height = 'auto',
+		$justifyContent = 'flex-start',
+		$width = 'auto',
+		children,
+		className,
+		style,
+		tag = 'div',
+		...rest
+	} = props;
 
-	return <S.Wrapper>{children}</S.Wrapper>;
-};
+	const styledProps: S.FlexStyledProps = {
+		$alignItems,
+		$direction,
+		$flexGrow,
+		$flexWrap,
+		$fullWidth,
+		$gap,
+		$height,
+		$justifyContent,
+		$width
+	};
+
+	return (
+		<S.FlexStyled
+			ref={ref as ForwardedRef<HTMLDivElement>}
+			as={tag}
+			className={className}
+			style={style}
+			{...styledProps}
+			{...rest}
+		>
+			{children}
+		</S.FlexStyled>
+	);
+});
+
+Flex.displayName = 'Flex';
 
 export default Flex;

@@ -42,3 +42,4 @@ tmp/
 .next/
 out/
 cache/
+*.stories.tsx

@@ -1,4 +1,3 @@
-export type * from './category';
-export type * from './common';
-export type * from './quiz';
-export type * from './token';
+export type * from './apis';
+export type * from './components';
+export type * from './store';
