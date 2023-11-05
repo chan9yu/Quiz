@@ -1,9 +1,9 @@
 import { ForwardedRef, HTMLAttributes, forwardRef } from 'react';
 
-import type { CommonPropsWithChuldren } from '../../../@types';
+import type { CommonPropsWithChildren } from '../../../@types';
 import * as S from './Text.styled';
 
-interface TextProps extends S.TextStyledProps, CommonPropsWithChuldren, HTMLAttributes<HTMLElement> {
+interface TextProps extends S.TextStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
 	tag?: keyof JSX.IntrinsicElements;
 }
 

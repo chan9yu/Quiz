@@ -1,10 +1,10 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 import { Loader } from '..';
-import type { CommonPropsWithChuldren } from '../../../@types';
+import type { CommonPropsWithChildren } from '../../../@types';
 import * as S from './Button.styles';
 
-interface ButtonProps extends S.ButtonStyledProps, CommonPropsWithChuldren, ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ButtonProps extends S.ButtonStyledProps, CommonPropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
