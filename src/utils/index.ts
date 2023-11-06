@@ -30,3 +30,16 @@ export const base64Decode = (encodedString: string) => {
 		return null;
 	}
 };
+
+/**
+ * 주어진 문자열이 유효한 JSON 형식인지 확인하는 유틸 함수
+ * @param string JSON 형식으로 파싱할 문자열
+ * @returns 문자열이 유효한 JSON일 경우 파싱된 객체를 반환, 유효하지 않은 경우 false를 반환
+ */
+export const isValidJSON = (string: string) => {
+	try {
+		return JSON.parse(string);
+	} catch {
+		return false;
+	}
+};

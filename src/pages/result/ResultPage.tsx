@@ -1,26 +1,20 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import type { QuizData } from '../../@types';
-import { Button, Flex, IncorrectNoteBox, Text } from '../../components';
+import type { ResultData } from '../../@types';
+import { Button, Flex, IncorrectNoteBox, ResultChart, Text } from '../../components';
 import { ROUTER_PATH } from '../../constants';
 import { resetQuizAction } from '../../store';
-import { base64Decode } from '../../utils';
-
-const isValidJSON = (string: string) => {
-	try {
-		return JSON.parse(string);
-	} catch {
-		return false;
-	}
-};
+import { base64Decode, isValidJSON } from '../../utils';
 
 const ResultPage = () => {
 	const dispatch = useDispatch();
 
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
-	const incorrectList = isValidJSON(searchParams.get('res') as string) as QuizData[];
+	const resultData = isValidJSON(searchParams.get('res') as string) as ResultData;
+	const incorrectCount = resultData.incorrectQuizData.length;
+	const correctCount = resultData.quizCount - incorrectCount;
 
 	const resetQuizAndMoveToReadyPage = () => {
 		dispatch(resetQuizAction());
@@ -31,24 +25,38 @@ const ResultPage = () => {
 		resetQuizAndMoveToReadyPage();
 	};
 
-	if (!incorrectList) {
+	if (!resultData) {
 		resetQuizAndMoveToReadyPage();
 		return null;
 	}
 
 	return (
-		<Flex $direction="column" $alignItems="center" $gap={16}>
-			<Text $size="600" $weight="bold" tag="h2">
-				모든 퀴즈를 풀었습니다 🎉
-			</Text>
+		<Flex $direction="column" $alignItems="center" $height="100%" $gap={20}>
+			<Flex $direction="column" $alignItems="center" $gap={8}>
+				<Text $size="500" $weight="bold" tag="h2">
+					🥳 모든 퀴즈를 풀었습니다 🎉
+				</Text>
+				<Flex $alignItems="center" $gap={8}>
+					<Text $color="success" $colorLevel="500" $size="50">
+						정답 {correctCount}개
+					</Text>
+					<Text $color="error" $colorLevel="500" $size="50">
+						오답 {incorrectCount}개
+					</Text>
+					<Text $colorLevel="600" $size="50" $weight="medium">
+						&nbsp; 총 소요 시간 {resultData.seconds}초
+					</Text>
+				</Flex>
+			</Flex>
+			<ResultChart correctCount={correctCount} incorrectCount={incorrectCount} />
 			<Button $fullWidth onClick={handleMoveToReadyPage}>
 				처음으로
 			</Button>
-			<Flex $direction="column" $gap={8}>
+			<Flex $direction="column" $gap={8} style={{ flex: 1, overflow: 'auto' }}>
 				<Text $colorLevel="700" $size="200" $weight="medium">
-					오답 노트
+					오답 노트 📝
 				</Text>
-				{incorrectList?.map(({ correct_answer, question }, index) => (
+				{resultData?.incorrectQuizData.map(({ correct_answer, question }, index) => (
 					<IncorrectNoteBox
 						key={index}
 						answer={base64Decode(correct_answer) || ''}
