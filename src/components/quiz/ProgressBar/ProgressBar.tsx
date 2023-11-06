@@ -1,14 +1,26 @@
-import { ReactNode } from 'react';
 import * as S from './ProgressBar.styled';
 
 interface ProgressBarProps {
-	children?: ReactNode;
+	/**
+	 * - 진행상황을 나타내는 속성입니다.
+	 * - `0 ~ 100 사이에 숫자만` 입력가능합니다.
+	 */
+	percent: number;
 }
 
 const ProgressBar = (props: ProgressBarProps) => {
-	const { children } = props;
+	const { percent } = props;
+	const isPercentageValid = percent >= 0 && percent <= 100 && Number.isInteger(percent);
 
-	return <S.Wrapper>{children}</S.Wrapper>;
+	if (!isPercentageValid) {
+		throw new Error('0 ~ 100 사이에 숫자만 입력가능합니다.');
+	}
+
+	return (
+		<S.Wrapper>
+			<S.Inner $percent={percent} />
+		</S.Wrapper>
+	);
 };
 
 export default ProgressBar;
