@@ -13,6 +13,12 @@ const initialState: QuizState = {
 export const quizReducer = (state = initialState, action: actions.QuizActionTypes) =>
 	produce(state, draft => {
 		switch (action.type) {
+			case actions.RESET_QUIZ:
+				draft.getQuizLoading = false;
+				draft.getQuizSuccess = false;
+				draft.getQuizError = null;
+				draft.quiz = null;
+				break;
 			case actions.GET_QUIZ_REQUEST:
 				draft.getQuizLoading = true;
 				draft.getQuizSuccess = false;
