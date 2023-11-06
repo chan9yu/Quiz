@@ -27,7 +27,7 @@ const ReadyPage = () => {
 			amount: Number(amountData.value),
 			category: Number(categoryData.value),
 			difficulty: difficultyData.value as 'easy' | 'medium' | 'hard',
-			// encode: 'base64',
+			encode: 'base64',
 			// token,
 			type: 'multiple'
 		};
