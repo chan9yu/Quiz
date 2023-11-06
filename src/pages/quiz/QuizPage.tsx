@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import type { IncorrectQuizData, QuizData, ResultData } from '../../@types';
 import { Button, ChoiceItem, Flex, ProgressBar, Text } from '../../components';
 import { ROUTER_PATH } from '../../constants';
 import { RootState, resetQuizAction } from '../../store';
 import { base64Decode, shuffleArray } from '../../utils';
-import { QuizData } from '../../@types';
 
 const QuizPage = () => {
 	const navigate = useNavigate();
@@ -14,9 +14,13 @@ const QuizPage = () => {
 	const dispatch = useDispatch();
 	const { quiz } = useSelector((state: RootState) => state.quiz);
 
+	const timeoutId = useRef<NodeJS.Timeout>();
+	const [seconds, setSeconds] = useState(0);
+
 	const [quizStep, setQuizStep] = useState(0);
 	const [answerStatus, setAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
 	const [selectedChoiceIndex, setSelectedChoiceIndex] = useState<number | null>(null);
+	const [incorrectList, setIncorrectList] = useState<QuizData[]>([]);
 
 	const isLastQuiz = quiz && quizStep + 1 === quiz.length;
 	const currentQuizData = (quiz && quiz[quizStep]) as QuizData;
@@ -33,14 +37,27 @@ const QuizPage = () => {
 		} else {
 			// 선택한 지문이 오답인 경우
 			setAnswerStatus('incorrect');
+			setIncorrectList(prev => [...prev, currentQuizData]);
 		}
 	};
 
 	const handleNextStep = () => {
 		if (isLastQuiz) {
 			// 모든 문제를 풀었을 경우
-			navigate(ROUTER_PATH.RESULT);
-			// TODO
+			const incorrectQuizData: IncorrectQuizData[] = incorrectList.map(({ correct_answer, question }) => ({
+				correct_answer,
+				question
+			}));
+			const resultData: ResultData = {
+				incorrectQuizData,
+				quizCount: quiz.length,
+				seconds: String(seconds)
+			};
+			const encodedIncorrectQuizData = encodeURIComponent(JSON.stringify(resultData));
+			navigate({
+				pathname: ROUTER_PATH.RESULT,
+				search: `?res=${encodedIncorrectQuizData}`
+			});
 		} else {
 			// 다음 문제가 있을 경우
 			setQuizStep(prev => prev + 1);
@@ -53,6 +70,16 @@ const QuizPage = () => {
 			dispatch(resetQuizAction());
 		}
 	};
+
+	useEffect(() => {
+		timeoutId.current = setInterval(() => {
+			setSeconds(prevSeconds => prevSeconds + 1);
+		}, 1000);
+
+		return () => {
+			clearInterval(timeoutId.current);
+		};
+	}, []);
 
 	useEffect(() => {
 		// 새로고침 시도 시 경고문
@@ -79,14 +106,19 @@ const QuizPage = () => {
 
 	return (
 		<Flex $direction="column" $height="100%" $gap={20}>
-			<Text $size="600" $weight="bold" tag="h2">
-				Question {quizStep + 1}
-			</Text>
+			<Flex $fullWidth $justifyContent="space-between" $alignItems="end">
+				<Text $size="600" $weight="bold" tag="h2">
+					Question {quizStep + 1}
+				</Text>
+				<Text $colorLevel="600" $size="75">
+					⏰ {seconds}초
+				</Text>
+			</Flex>
 			<Flex $alignItems="center" $gap={12} $fullWidth>
 				<ProgressBar percent={((quizStep + 1) / quiz.length) * 100} />
 				<Text $color="gray" $colorLevel="500" $weight="bold">{`${quizStep + 1}/${quiz.length}`}</Text>
 			</Flex>
-			<Text $size="400" $weight="medium">
+			<Text $size="400" $weight="medium" style={{ height: '100px' }}>
 				{base64Decode(currentQuizData.question)}
 			</Text>
 			<Flex $height={50}>
