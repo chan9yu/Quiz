@@ -31,7 +31,7 @@
 		"commit": "npx git-cz",
 		"prepare": "husky install",
 		"husky:permission": "chmod +x .husky/*",
-		"deploy": "gh-pages -d dist -t true",
+		"deploy": "gh-pages-clean gh-pages -d dist -t true",
 		"storybook": "storybook dev -p 6006",
 		"build:storybook": "storybook build"
 	},
