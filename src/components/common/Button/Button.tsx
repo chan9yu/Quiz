@@ -4,7 +4,10 @@ import { Loader } from '..';
 import type { CommonPropsWithChildren } from '../../../@types';
 import * as S from './Button.styles';
 
-interface ButtonProps extends S.ButtonStyledProps, CommonPropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface ButtonProps
+	extends S.ButtonStyledProps,
+		CommonPropsWithChildren,
+		ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
@@ -15,6 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		$width,
 		children,
 		className,
+		disabled,
 		style,
 		...rest
 	} = props;
@@ -28,7 +32,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	};
 
 	return (
-		<S.ButtonStyled ref={ref} className={className} style={style} {...styledProps} {...rest}>
+		<S.ButtonStyled
+			ref={ref}
+			role="button"
+			className={className}
+			disabled={disabled || $loading}
+			style={style}
+			{...styledProps}
+			{...rest}
+		>
 			{$loading && <Loader $borderWidth="2px" $color={$color} $size={16} />}
 			{children}
 		</S.ButtonStyled>

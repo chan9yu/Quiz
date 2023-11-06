@@ -1,7 +1,7 @@
 import { Flex, Text } from '../..';
-import * as S from './IncorrectNoteBox.styled';
+import * as S from './IncorrectNoteBox.styles';
 
-interface IncorrectNoteBoxProps {
+export interface IncorrectNoteBoxProps {
 	/** 오답이였던 퀴즈의 정답 */
 	answer?: string;
 
@@ -13,7 +13,7 @@ const IncorrectNoteBox = (props: IncorrectNoteBoxProps) => {
 	const { answer, question } = props;
 
 	return (
-		<S.Wrapper>
+		<S.Wrapper role="alert">
 			<Text $size="100" $weight="bold">
 				{question}
 			</Text>
