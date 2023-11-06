@@ -16,6 +16,8 @@ type ColorPalette = {
 declare module 'styled-components' {
 	export interface DefaultTheme {
 		color: {
+			white: string;
+			black: string;
 			gray: ColorPalette;
 			primary: ColorPalette;
 			secondary: ColorPalette;

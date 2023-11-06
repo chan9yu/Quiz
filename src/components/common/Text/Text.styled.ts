@@ -8,6 +8,8 @@ export interface TextStyledProps {
 }
 
 export const TextStyled = styled.span<TextStyledProps>`
+	line-height: 1.23;
+
 	${props => css`
 		color: ${props.theme.color[props.$color || 'gray'][props.$colorLevel || '900']};
 		font-size: ${props.theme.typography.size[props.$size || '300']};

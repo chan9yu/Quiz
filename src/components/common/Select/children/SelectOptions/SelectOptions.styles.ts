@@ -6,7 +6,7 @@ export const SelectOptionsStyled = styled.div`
 	transform: translateX(-50%);
 	width: 100%;
 	max-height: 300px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	border-radius: 4px;
 	padding: 6px 0;
 	box-sizing: border-box;
