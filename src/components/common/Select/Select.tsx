@@ -5,7 +5,7 @@ import { SelectOption, SelectOptions, SelectTrigger } from './children';
 import { SelectContext } from './context';
 import * as S from './Select.styles';
 
-interface SelectProps extends ChildrenProps {
+export interface SelectProps extends ChildrenProps {
 	onChange?: (data: SelectData) => void;
 	selectData?: SelectData;
 }
@@ -38,7 +38,9 @@ const Select = (props: SelectProps) => {
 				selectData
 			}}
 		>
-			<S.SelectStyled ref={selectRef}>{children}</S.SelectStyled>
+			<S.SelectStyled ref={selectRef} role="combobox">
+				{children}
+			</S.SelectStyled>
 		</SelectContext.Provider>
 	);
 };

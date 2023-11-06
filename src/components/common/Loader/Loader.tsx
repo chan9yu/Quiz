@@ -1,9 +1,9 @@
 import { HTMLAttributes, forwardRef } from 'react';
 
 import type { CommonProps } from '../../../@types';
-import * as S from './Loader.styled';
+import * as S from './Loader.styles';
 
-interface LoaderProps extends S.LoaderStyledProps, CommonProps, HTMLAttributes<HTMLDivElement> {}
+export interface LoaderProps extends S.LoaderStyledProps, CommonProps, HTMLAttributes<HTMLDivElement> {}
 
 const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
 	const {
@@ -23,7 +23,7 @@ const Loader = forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
 		$size
 	};
 
-	return <S.LoaderStyled ref={ref} className={className} style={style} {...styledProps} {...rest} />;
+	return <S.LoaderStyled ref={ref} role="status" className={className} style={style} {...styledProps} {...rest} />;
 });
 
 Loader.displayName = 'Loader';

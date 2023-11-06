@@ -1,6 +1,6 @@
-import * as S from './ProgressBar.styled';
+import * as S from './ProgressBar.styles';
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
 	/**
 	 * - 진행상황을 나타내는 속성입니다.
 	 * - `0 ~ 100 사이에 숫자만` 입력가능합니다.
@@ -17,7 +17,7 @@ const ProgressBar = (props: ProgressBarProps) => {
 	}
 
 	return (
-		<S.Wrapper>
+		<S.Wrapper role="progressbar">
 			<S.Inner $percent={percent} />
 		</S.Wrapper>
 	);

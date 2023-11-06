@@ -1,9 +1,9 @@
 import { ForwardedRef, HTMLAttributes, forwardRef } from 'react';
 
 import type { CommonPropsWithChildren } from '../../../@types';
-import * as S from './Text.styled';
+import * as S from './Text.styles';
 
-interface TextProps extends S.TextStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
+export interface TextProps extends S.TextStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
 	tag?: keyof JSX.IntrinsicElements;
 }
 
@@ -30,6 +30,7 @@ const Text = forwardRef<HTMLElement, TextProps>((props, ref) => {
 	return (
 		<S.TextStyled
 			ref={ref as ForwardedRef<HTMLSpanElement>}
+			role="text"
 			as={tag}
 			className={className}
 			style={style}

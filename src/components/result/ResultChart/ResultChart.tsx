@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import * as S from './ResultChart.styles';
 
-interface ResultChartProps {
+export interface ResultChartProps {
 	correctCount: number;
 	incorrectCount: number;
 }
@@ -13,7 +13,7 @@ const ResultChart = (props: ResultChartProps) => {
 	const { color } = useTheme();
 
 	return (
-		<S.Wrapper>
+		<S.Wrapper role="graphics-document">
 			<Pie
 				data={{
 					labels: ['정답', '오답'],

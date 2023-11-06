@@ -1,8 +1,8 @@
 import { Text } from '../..';
 import type { ChildrenProps } from '../../../@types';
-import * as S from './ChoiceItem.styled';
+import * as S from './ChoiceItem.styles';
 
-interface ChoiceItemProps extends ChildrenProps {
+export interface ChoiceItemProps extends ChildrenProps {
 	/** 현재 문제가 정답인지 오답인지 구분하는 데이터 */
 	answerStatus?: 'correct' | 'incorrect' | null;
 
@@ -23,7 +23,7 @@ const ChoiceItem = (props: ChoiceItemProps) => {
 	const { answerStatus = null, children, isCorrect = false, onClick, prefixNumber, selected = false } = props;
 
 	return (
-		<S.Wrapper $answerStatus={answerStatus} $isCorrect={isCorrect} $selected={selected} onClick={onClick}>
+		<S.Wrapper role="button" $answerStatus={answerStatus} $isCorrect={isCorrect} $selected={selected} onClick={onClick}>
 			<S.PrefixItem>{prefixNumber}</S.PrefixItem>
 			<Text $size="200" $weight="bold" style={{ flex: 1 }}>
 				{children}

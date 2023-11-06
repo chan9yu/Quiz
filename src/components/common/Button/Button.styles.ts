@@ -19,11 +19,7 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
 	border-radius: 4px;
 	border: 0;
 	transition: all 120ms linear;
-
-	&:disabled {
-		cursor: not-allowed;
-		opacity: 0.75;
-	}
+	cursor: pointer;
 
 	${props => {
 		const buttonSize = {
@@ -51,8 +47,12 @@ export const ButtonStyled = styled.button<ButtonStyledProps>`
 			font-size: ${buttonSize[props.$size ?? 'md'].fontSize};
 			color: ${props.theme.color.gray['50']};
 			background-color: ${props.theme.color[props.$color ?? 'primary']['500']};
-			cursor: ${props.$loading ? 'progress' : 'pointer'};
 			opacity: ${props.$loading && 0.75};
+
+			&:disabled {
+				cursor: ${props.$loading ? 'progress' : 'not-allowed'};
+				opacity: 0.75;
+			}
 
 			&:hover:not(&:disabled) {
 				background-color: ${!props.$loading && props.theme.color[props.$color ?? 'primary']['600']};

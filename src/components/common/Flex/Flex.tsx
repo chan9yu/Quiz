@@ -1,9 +1,9 @@
 import { ForwardedRef, HTMLAttributes, forwardRef } from 'react';
 
 import type { CommonPropsWithChildren } from '../../../@types';
-import * as S from './Flex.styled';
+import * as S from './Flex.styles';
 
-interface FlexProps extends S.FlexStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
+export interface FlexProps extends S.FlexStyledProps, CommonPropsWithChildren, HTMLAttributes<HTMLElement> {
 	tag?: keyof JSX.IntrinsicElements;
 }
 
@@ -40,6 +40,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
 	return (
 		<S.FlexStyled
 			ref={ref as ForwardedRef<HTMLDivElement>}
+			role="region"
 			as={tag}
 			className={className}
 			style={style}
