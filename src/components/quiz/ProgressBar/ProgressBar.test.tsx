@@ -5,7 +5,7 @@ import ProgressBar from './ProgressBar';
 
 describe('ProgressBar', () => {
 	it('renders headline', () => {
-		render(<ProgressBar />);
+		render(<ProgressBar percent={0} />);
 		screen.debug();
 	});
 });
