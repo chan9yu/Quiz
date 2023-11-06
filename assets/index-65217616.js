@@ -1,0 +1,1 @@
+const n=e=>{for(let t=e.length-1;t>0;t--){const o=Math.floor(Math.random()*(t+1)),r=e[t];e[t]=e[o],e[o]=r}return e},s=e=>{try{return atob(e)}catch(t){return console.error("Error decoding Base64:",t),null}},c=e=>{try{return JSON.parse(e)}catch{return!1}};export{s as b,c as i,n as s};
