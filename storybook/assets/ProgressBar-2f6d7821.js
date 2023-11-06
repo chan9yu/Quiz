@@ -1,2 +1,0 @@
-import{j as e}from"./jsx-runtime-ffb262ed.js";import{s as t}from"./styled-components.browser.esm-6bbe5efe.js";const a=t.div.withConfig({displayName:"ProgressBarstyled__Wrapper",componentId:"sc-1fd0hzq-0"})([""]),s=r=>{const{children:o}=r;return e.jsx(a,{children:o})};try{s.displayName="ProgressBar",s.__docgenInfo={description:"",displayName:"ProgressBar",props:{}}}catch{}export{s as P};
-//# sourceMappingURL=ProgressBar-2f6d7821.js.map
