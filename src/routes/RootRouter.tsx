@@ -4,6 +4,7 @@ import { RouteObject, RouterProvider, createHashRouter } from 'react-router-dom'
 import { ROUTER_PATH } from '../constants';
 import { AppLayout } from '../layouts';
 import * as P from '../pages';
+import { Loader } from '../components';
 
 const appObject: RouteObject[] = [
 	{
@@ -30,7 +31,19 @@ const routeObject: RouteObject[] = [
 ];
 
 const Router = () => (
-	<Suspense fallback={<span>Loading...</span>}>
+	<Suspense
+		fallback={
+			<Loader
+				$size={80}
+				$position="fixed"
+				style={{
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)'
+				}}
+			/>
+		}
+	>
 		<RouterProvider router={createHashRouter(routeObject)} />
 	</Suspense>
 );
