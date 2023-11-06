@@ -36,8 +36,10 @@ const ReadyPage = () => {
 	};
 
 	useEffect(() => {
-		dispatch(getCategoryRequestAction());
-	}, [dispatch]);
+		if (!categories.length) {
+			dispatch(getCategoryRequestAction());
+		}
+	}, [categories, dispatch]);
 
 	useEffect(() => {
 		if (!getQuizLoading && getQuizSuccess && quiz) {
