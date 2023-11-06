@@ -17,6 +17,7 @@ const QuizPage = () => {
 	const [quizStep, setQuizStep] = useState(0);
 	const [answerStatus, setAnswerStatus] = useState<'correct' | 'incorrect' | null>(null);
 	const [selectedChoiceIndex, setSelectedChoiceIndex] = useState<number | null>(null);
+	const [incorrectList, setIncorrectList] = useState<QuizData[]>([]);
 
 	const isLastQuiz = quiz && quizStep + 1 === quiz.length;
 	const currentQuizData = (quiz && quiz[quizStep]) as QuizData;
@@ -33,14 +34,18 @@ const QuizPage = () => {
 		} else {
 			// 선택한 지문이 오답인 경우
 			setAnswerStatus('incorrect');
+			setIncorrectList(prev => [...prev, currentQuizData]);
 		}
 	};
 
 	const handleNextStep = () => {
 		if (isLastQuiz) {
 			// 모든 문제를 풀었을 경우
-			navigate(ROUTER_PATH.RESULT);
-			// TODO
+			const encodedIncorrectList = encodeURIComponent(JSON.stringify(incorrectList));
+			navigate({
+				pathname: ROUTER_PATH.RESULT,
+				search: `?res=${encodedIncorrectList}`
+			});
 		} else {
 			// 다음 문제가 있을 경우
 			setQuizStep(prev => prev + 1);
@@ -86,7 +91,7 @@ const QuizPage = () => {
 				<ProgressBar percent={((quizStep + 1) / quiz.length) * 100} />
 				<Text $color="gray" $colorLevel="500" $weight="bold">{`${quizStep + 1}/${quiz.length}`}</Text>
 			</Flex>
-			<Text $size="400" $weight="medium">
+			<Text $size="400" $weight="medium" style={{ height: '100px' }}>
 				{base64Decode(currentQuizData.question)}
 			</Text>
 			<Flex $height={50}>
