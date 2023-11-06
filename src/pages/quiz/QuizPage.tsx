@@ -150,7 +150,16 @@ const QuizPage = () => {
 					</ChoiceItem>
 				))}
 			</Flex>
-			<Flex $direction="column" $fullWidth $gap={12}>
+			<Flex
+				$direction="column"
+				$fullWidth
+				$gap={12}
+				style={{
+					...(window.innerWidth < 480 && {
+						paddingBottom: '12px'
+					})
+				}}
+			>
 				<Button $fullWidth disabled={!answerStatus} onClick={handleNextStep}>
 					{isLastQuiz ? '결과 보기' : '다음 문항'}
 				</Button>

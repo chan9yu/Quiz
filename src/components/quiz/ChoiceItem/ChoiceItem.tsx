@@ -25,7 +25,7 @@ const ChoiceItem = (props: ChoiceItemProps) => {
 	return (
 		<S.Wrapper $answerStatus={answerStatus} $isCorrect={isCorrect} $selected={selected} onClick={onClick}>
 			<S.PrefixItem>{prefixNumber}</S.PrefixItem>
-			<Text $size="200" $weight="bold">
+			<Text $size="200" $weight="bold" style={{ flex: 1 }}>
 				{children}
 			</Text>
 		</S.Wrapper>

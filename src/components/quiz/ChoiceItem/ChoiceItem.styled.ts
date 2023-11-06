@@ -56,6 +56,7 @@ export const PrefixItem = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-basis: 1;
 
 	${props => css`
 		color: ${props.theme.color.white};
