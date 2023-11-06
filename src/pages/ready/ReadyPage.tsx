@@ -1,13 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import type { QuizRequestParams, SelectData } from '../../@types';
 import { Button, Flex, Select, Text } from '../../components';
+import { ROUTER_PATH } from '../../constants';
 import { RootState, getCategoryRequestAction, getQuizRequestAction } from '../../store';
 
 const ReadyPage = () => {
+	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
-	const { category: categoryState, quiz: quizState } = useSelector((state: RootState) => state);
+	const { categories } = useSelector((state: RootState) => state.category);
+	const { getQuizLoading, getQuizSuccess, quiz } = useSelector((state: RootState) => state.quiz);
 
 	const [amountData, setAmountData] = useState<SelectData>({ value: '5', label: '5문제' });
 	const [categoryData, setCategoryData] = useState<SelectData>({ value: '9', label: 'General Knowledge' });
@@ -34,6 +39,12 @@ const ReadyPage = () => {
 		dispatch(getCategoryRequestAction());
 	}, [dispatch]);
 
+	useEffect(() => {
+		if (!getQuizLoading && getQuizSuccess && quiz) {
+			navigate(ROUTER_PATH.QUIZ);
+		}
+	}, [getQuizLoading, getQuizSuccess, navigate, quiz]);
+
 	return (
 		<Flex $direction="column" $fullWidth $alignItems="center" $height="100%" $justifyContent="center" $gap={20}>
 			<Text tag="h1" $size="800" $weight="bold">
@@ -56,7 +67,7 @@ const ReadyPage = () => {
 				<Select selectData={categoryData} onChange={onChangeCategoryId}>
 					<Select.Trigger selectLabel="카테고리를 선택해주세요." />
 					<Select.Options>
-						{categoryState.categories.map(({ id, name }) => (
+						{categories.map(({ id, name }) => (
 							<Select.Option key={id} value={String(id)} label={name} />
 						))}
 					</Select.Options>
@@ -71,7 +82,7 @@ const ReadyPage = () => {
 					</Select.Options>
 				</Select>
 			</Flex>
-			<Button $fullWidth $loading={quizState.getQuizLoading} $size="lg" onClick={handleStartQuiz}>
+			<Button $fullWidth $loading={getQuizLoading} $size="lg" onClick={handleStartQuiz}>
 				퀴즈 풀기
 			</Button>
 		</Flex>
