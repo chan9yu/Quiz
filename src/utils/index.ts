@@ -15,3 +15,18 @@ export const shuffleArray = (array: string[]) => {
 
 	return array;
 };
+
+/**
+ * basse64를 일반 문자열로 변환해주는 유틸 함수
+ * @param encodedString 디코딩 대상 base64 문자열
+ * @returns 디코딩된 문자열
+ */
+export const base64Decode = (encodedString: string) => {
+	try {
+		const decodedString = atob(encodedString);
+		return decodedString;
+	} catch (error) {
+		console.error('Error decoding Base64:', error);
+		return null;
+	}
+};
