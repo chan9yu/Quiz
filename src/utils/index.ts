@@ -6,14 +6,16 @@
  * @returns 무작위로 섞인 문자열 배열
  */
 export const shuffleArray = (array: string[]) => {
-	for (let i = array.length - 1; i > 0; i--) {
+	const newArray = [...array];
+
+	for (let i = newArray.length - 1; i > 0; i--) {
 		const randomPos = Math.floor(Math.random() * (i + 1));
-		const temp = array[i];
-		array[i] = array[randomPos];
-		array[randomPos] = temp;
+		const temp = newArray[i];
+		newArray[i] = newArray[randomPos];
+		newArray[randomPos] = temp;
 	}
 
-	return array;
+	return newArray;
 };
 
 /**

@@ -2,18 +2,19 @@ import { Pie } from 'react-chartjs-2';
 import { useTheme } from 'styled-components';
 
 import * as S from './ResultChart.styles';
+import { HTMLAttributes } from 'react';
 
-export interface ResultChartProps {
+export interface ResultChartProps extends HTMLAttributes<HTMLDivElement> {
 	correctCount: number;
 	incorrectCount: number;
 }
 
 const ResultChart = (props: ResultChartProps) => {
-	const { correctCount, incorrectCount } = props;
+	const { correctCount, incorrectCount, ...rest } = props;
 	const { color } = useTheme();
 
 	return (
-		<S.Wrapper role="graphics-document">
+		<S.Wrapper role="graphics-document" {...rest}>
 			<Pie
 				data={{
 					labels: ['정답', '오답'],

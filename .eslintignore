@@ -13,6 +13,7 @@ __snapshots__/
 tests/
 test-helpers/
 storybook-static/
+cypress/
 
 # Ignore configuration files
 .babelrc.json
