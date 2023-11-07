@@ -37,18 +37,18 @@ const ResultPage = () => {
 					🥳 모든 퀴즈를 풀었습니다 🎉
 				</Text>
 				<Flex $alignItems="center" $gap={8}>
-					<Text $color="success" $colorLevel="500" $size="50">
+					<Text id="correct-count" $color="success" $colorLevel="500" $size="50">
 						정답 {correctCount}개
 					</Text>
-					<Text $color="error" $colorLevel="500" $size="50">
+					<Text id="incorrect-count" $color="error" $colorLevel="500" $size="50">
 						오답 {incorrectCount}개
 					</Text>
-					<Text $colorLevel="600" $size="50" $weight="medium">
+					<Text id="seconds" $colorLevel="600" $size="50" $weight="medium">
 						&nbsp; 총 소요 시간 {resultData.seconds}초
 					</Text>
 				</Flex>
 			</Flex>
-			<ResultChart correctCount={correctCount} incorrectCount={incorrectCount} />
+			<ResultChart id="result-chart" correctCount={correctCount} incorrectCount={incorrectCount} />
 			<Button $fullWidth onClick={handleMoveToReadyPage}>
 				처음으로
 			</Button>
@@ -58,6 +58,7 @@ const ResultPage = () => {
 			<Flex $direction="column" $gap={8} style={{ flex: 1, overflow: 'auto' }}>
 				{resultData?.incorrectQuizData.map(({ correct_answer, question }, index) => (
 					<IncorrectNoteBox
+						id="incorrect-note-box"
 						key={index}
 						answer={base64Decode(correct_answer) || ''}
 						question={base64Decode(question) || ''}

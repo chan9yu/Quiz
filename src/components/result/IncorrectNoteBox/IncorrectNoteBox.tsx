@@ -1,7 +1,9 @@
+import { HTMLAttributes } from 'react';
+
 import { Flex, Text } from '../..';
 import * as S from './IncorrectNoteBox.styles';
 
-export interface IncorrectNoteBoxProps {
+export interface IncorrectNoteBoxProps extends HTMLAttributes<HTMLDivElement> {
 	/** 오답이였던 퀴즈의 정답 */
 	answer?: string;
 
@@ -10,10 +12,10 @@ export interface IncorrectNoteBoxProps {
 }
 
 const IncorrectNoteBox = (props: IncorrectNoteBoxProps) => {
-	const { answer, question } = props;
+	const { answer, question, ...rest } = props;
 
 	return (
-		<S.Wrapper role="alert">
+		<S.Wrapper role="alert" {...rest}>
 			<Text $size="100" $weight="bold">
 				{question}
 			</Text>

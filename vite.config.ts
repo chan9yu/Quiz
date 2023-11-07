@@ -8,8 +8,8 @@ const babelOptions: BabelOptions = {
 const userConfig = defineConfig({
 	base: '/quiz_app',
 	server: {
-		host: 'localhost',
-		port: 3035
+		port: 3035,
+		host: '127.0.0.1',
 	},
 	plugins: [react({ babel: babelOptions })],
 	test: {

@@ -123,22 +123,23 @@ const QuizPage = () => {
 			</Text>
 			<Flex $height={50}>
 				{answerStatus === 'correct' && (
-					<Text $color="success" $colorLevel="500">
+					<Text id="correct_text" $color="success" $colorLevel="500">
 						정답입니다 😆
 					</Text>
 				)}
 				{answerStatus === 'incorrect' && (
 					<Flex $direction="column" $gap={8}>
-						<Text $color="error" $colorLevel="500">
+						<Text id="incorrect_text" $color="error" $colorLevel="500">
 							오답입니다 😥
 						</Text>
 						<Text>정답은 {base64Decode(currentQuizData.correct_answer)} 입니다</Text>
 					</Flex>
 				)}
 			</Flex>
-			<Flex $direction="column" $flexGrow={1} $fullWidth $gap={20} $justifyContent="center">
+			<Flex id="answer-list" $direction="column" $flexGrow={1} $fullWidth $gap={20} $justifyContent="center">
 				{answerList?.map((answer, index) => (
 					<ChoiceItem
+						id="answer-item"
 						key={answer}
 						answerStatus={answerStatus}
 						prefixNumber={index + 1}
@@ -163,7 +164,7 @@ const QuizPage = () => {
 				}}
 			>
 				{answerStatus && (
-					<Button $fullWidth disabled={!answerStatus} onClick={handleNextStep}>
+					<Button id="next-btn" $fullWidth disabled={!answerStatus} onClick={handleNextStep}>
 						{isLastQuiz ? '결과 보기' : '다음 문항'}
 					</Button>
 				)}

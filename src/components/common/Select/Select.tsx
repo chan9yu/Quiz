@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { HTMLAttributes, useEffect, useRef, useState } from 'react';
 
 import type { ChildrenProps, SelectData } from '../../../@types';
 import { SelectOption, SelectOptions, SelectTrigger } from './children';
 import { SelectContext } from './context';
 import * as S from './Select.styles';
 
-export interface SelectProps extends ChildrenProps {
+export interface SelectProps extends ChildrenProps, Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
 	onChange?: (data: SelectData) => void;
 	selectData?: SelectData;
 }
 
 const Select = (props: SelectProps) => {
-	const { children, onChange, selectData } = props;
+	const { children, onChange, selectData, ...rest } = props;
 
 	const [isOpen, setIsOpen] = useState(false);
 	const selectRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ const Select = (props: SelectProps) => {
 				selectData
 			}}
 		>
-			<S.SelectStyled ref={selectRef} role="combobox">
+			<S.SelectStyled ref={selectRef} role="combobox" {...rest}>
 				{children}
 			</S.SelectStyled>
 		</SelectContext.Provider>

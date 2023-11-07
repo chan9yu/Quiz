@@ -1,8 +1,10 @@
+import { HTMLAttributes } from 'react';
+
 import { Text } from '../..';
 import type { ChildrenProps } from '../../../@types';
 import * as S from './ChoiceItem.styles';
 
-export interface ChoiceItemProps extends ChildrenProps {
+export interface ChoiceItemProps extends ChildrenProps, HTMLAttributes<HTMLDivElement> {
 	/** 현재 문제가 정답인지 오답인지 구분하는 데이터 */
 	answerStatus?: 'correct' | 'incorrect' | null;
 
@@ -20,10 +22,17 @@ export interface ChoiceItemProps extends ChildrenProps {
 }
 
 const ChoiceItem = (props: ChoiceItemProps) => {
-	const { answerStatus = null, children, isCorrect = false, onClick, prefixNumber, selected = false } = props;
+	const { answerStatus = null, children, isCorrect = false, onClick, prefixNumber, selected = false, ...rest } = props;
 
 	return (
-		<S.Wrapper role="button" $answerStatus={answerStatus} $isCorrect={isCorrect} $selected={selected} onClick={onClick}>
+		<S.Wrapper
+			role="button"
+			$answerStatus={answerStatus}
+			$isCorrect={isCorrect}
+			$selected={selected}
+			onClick={onClick}
+			{...rest}
+		>
 			<S.PrefixItem>{prefixNumber}</S.PrefixItem>
 			<Text $size="200" $weight="bold" style={{ flex: 1 }}>
 				{children}

@@ -54,7 +54,7 @@ const ReadyPage = () => {
 			</Text>
 			<Flex $alignItems="center" $fullWidth $direction="column" $flexGrow={1} $gap={20} $justifyContent="center">
 				{/* amount select */}
-				<Select selectData={amountData} onChange={onChangeAmount}>
+				<Select id="amount_select" selectData={amountData} onChange={onChangeAmount}>
 					<Select.Trigger selectLabel="질문 수를 선택해주세요! (최대 10문제)" />
 					<Select.Options>
 						<Select.Option value="5" label="5문제" />
@@ -84,7 +84,7 @@ const ReadyPage = () => {
 					</Select.Options>
 				</Select>
 			</Flex>
-			<Button $fullWidth $loading={getQuizLoading} $size="lg" onClick={handleStartQuiz}>
+			<Button id="quiz-start" $fullWidth $loading={getQuizLoading} $size="lg" onClick={handleStartQuiz}>
 				퀴즈 풀기
 			</Button>
 		</Flex>
