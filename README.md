@@ -4,6 +4,17 @@
 
 <br />
 
+## Thumbnail
+
+<div style="display: flex; flex-direction: row;">
+  <img src="https://raw.githubusercontent.com/chan9yu/chan9yu/master/images/project/quiz_app/ready_page.png" width="48%" />
+  <img src="https://raw.githubusercontent.com/chan9yu/chan9yu/master/images/project/quiz_app/storybook.png" width="48%" />
+</div>
+
+<p align="right">
+  <a href="#readme-top">맨 위로</a>
+</p>
+
 ## 🔗 Link
 
 - <a href="https://chan9yu.github.io/quiz_app" target="_blank" rel="noreferrer">Quiz APP</a>
@@ -25,6 +36,7 @@
 - <img src="https://img.shields.io/badge/jest-C21325?style=for-the-badge&logo=jest&logoColor=white">
 - <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
 - <img src="https://img.shields.io/badge/vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white">
+- <img src="https://img.shields.io/badge/cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white">
 - <img src="https://img.shields.io/badge/githubpages-222222?style=for-the-badge&logo=githubpages&logoColor=white">
 - <img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
 
@@ -53,9 +65,31 @@
 
 ## 🧪 Test
 
-- ...
-- ...
-- ...
+```shell
+# Unit Test
+yarn test
+
+# E2E Test
+yarn cypress open
+```
+
+### Unit Test
+
+- `jest`과 `RTL(React-Testing-Library)` 대신 `vitest` 사용
+- 컴포넌트가 의도적으로 동작을 잘 하는지 렌더링에 문제없는지 확인하기 위해 단위 테스트 진행
+- 공통 유틸 함수들이 결함이 없는지 확인하기 위해 단위 테스트 진행
+
+> vitest 최소한의 노력으로 vite 기반 프로젝트와 통합되며, 매우 빠른 장점이 있기때문에 사용하게 되었습니다.<br />
+> vitest는 jest에서 사용되는 대부분의 api를 지원합니다.
+
+[vitest docs](https://vitest.dev/)
+
+### E2E Test
+
+- 기능 요구사항이 문제없이 개발되었는지 확인하기 위한 E2E 테스트 진행
+- cypress를 통해 테스트 진행
+
+<img src="https://raw.githubusercontent.com/chan9yu/chan9yu/master/images/project/quiz_app/quiz_app.cy.js.gif" />
 
 <p align="right">
   <a href="#readme-top">맨 위로</a>
