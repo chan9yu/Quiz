@@ -52,10 +52,10 @@ const ResultPage = () => {
 			<Button $fullWidth onClick={handleMoveToReadyPage}>
 				처음으로
 			</Button>
+			<Text $colorLevel="700" $size="200" $weight="medium" style={{ marginRight: 'auto' }}>
+				오답 노트 📝
+			</Text>
 			<Flex $direction="column" $gap={8} style={{ flex: 1, overflow: 'auto' }}>
-				<Text $colorLevel="700" $size="200" $weight="medium">
-					오답 노트 📝
-				</Text>
 				{resultData?.incorrectQuizData.map(({ correct_answer, question }, index) => (
 					<IncorrectNoteBox
 						key={index}

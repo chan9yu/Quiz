@@ -153,16 +153,20 @@ const QuizPage = () => {
 			<Flex
 				$direction="column"
 				$fullWidth
+				$justifyContent="flex-end"
 				$gap={12}
 				style={{
+					minHeight: '108px',
 					...(window.innerWidth < 480 && {
 						paddingBottom: '12px'
 					})
 				}}
 			>
-				<Button $fullWidth disabled={!answerStatus} onClick={handleNextStep}>
-					{isLastQuiz ? '결과 보기' : '다음 문항'}
-				</Button>
+				{answerStatus && (
+					<Button $fullWidth disabled={!answerStatus} onClick={handleNextStep}>
+						{isLastQuiz ? '결과 보기' : '다음 문항'}
+					</Button>
+				)}
 				<Button $color="gray" $fullWidth onClick={handleResetQuiz}>
 					나가기
 				</Button>

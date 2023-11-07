@@ -22,10 +22,10 @@ const ErrorPage = () => {
 	return (
 		<S.Wrapper>
 			<Flex $gap={4}>
-				<Text $color="primary" $colorLevel="700" $weight="bold" $size="900">
+				<Text $color="error" $colorLevel="500" $weight="bold" $size="900">
 					404
 				</Text>
-				<Text $color="secondary" $colorLevel="700" $weight="bold" $size="900">
+				<Text $color="error" $colorLevel="600" $weight="bold" $size="900">
 					Not Found
 				</Text>
 			</Flex>
