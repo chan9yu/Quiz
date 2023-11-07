@@ -115,7 +115,7 @@ const QuizPage = () => {
 				</Text>
 			</Flex>
 			<Flex $alignItems="center" $gap={12} $fullWidth>
-				<ProgressBar percent={((quizStep + 1) / quiz.length) * 100} />
+				<ProgressBar percent={Math.ceil(((quizStep + 1) / quiz.length) * 100)} />
 				<Text $color="gray" $colorLevel="500" $weight="bold">{`${quizStep + 1}/${quiz.length}`}</Text>
 			</Flex>
 			<Text $size="400" $weight="medium" style={{ height: '100px' }}>
